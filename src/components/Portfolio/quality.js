@@ -69,7 +69,7 @@ export default function Quality() {
           {/* Titre de la carte */}
           <h3 className="text-xl font-semibold mb-2">Ergonomie qui fait sens</h3>
           {/* Description de l'ergonomie */}
-          <p>Conception d'interfaces claires et accessibles.</p>
+          <p>Conception d&apos;interfaces claires et accessibles.</p>
         </div>
 
         {/* Quatrième carte - Passion */}
