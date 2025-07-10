@@ -22,13 +22,22 @@
 
 /* 
  * Style pour le texte animé
- * - Taille de police de 50px
+ * - Taille de police de 50px sur desktop
+ * - Taille de police réduite à 35px sur mobile
  * - Marge supérieure de 50px pour l'espacement
  * - Pas de marge sur les côtés ni en bas
  */
 .animate {
   font-size: 50px;
   margin: 50px 0 0;
+}
+
+/* Réduction de la taille de police sur mobile */
+@media (max-width: 768px) {
+  .animate {
+    font-size: 35px;
+    margin: 30px 0 0;
+  }
 }
 
 /* 

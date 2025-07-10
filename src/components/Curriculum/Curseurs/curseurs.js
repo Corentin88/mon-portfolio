@@ -1,5 +1,5 @@
 // Importation du hook useState de React pour gérer l'état local du composant
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from 'next/image';
 
 /**
@@ -12,6 +12,28 @@ export default function Curseurs() {
   const [currentSkill, setCurrentSkill] = useState(0);
   // État pour basculer entre les onglets de compétences (true) et technologies (false)
   const [isSkillsTab, setIsSkillsTab] = useState(true);
+  // État pour gérer la taille du cercle en fonction de l'écran
+  const [circleSize, setCircleSize] = useState({ radius: 60, strokeWidth: 12 });
+
+  // Effet pour ajuster la taille du cercle en fonction de la largeur de l'écran
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth < 768) {
+        setCircleSize({ radius: 60, strokeWidth: 12 });
+      } else {
+        setCircleSize({ radius: 120, strokeWidth: 20 });
+      }
+    };
+
+    // Appel initial
+    handleResize();
+    
+    // Écouteur d'événement pour le redimensionnement de la fenêtre
+    window.addEventListener('resize', handleResize);
+    
+    // Nettoyage
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   // Tableau des compétences en langages de programmation avec leur niveau de maîtrise (en %)
   const skills = [
@@ -33,7 +55,7 @@ export default function Curseurs() {
   ];
 
   // Calcul de la circonférence du cercle pour l'animation du curseur (2 * π * rayon)
-  const circumference = 2 * Math.PI * 120;
+  const circumference = 2 * Math.PI * circleSize.radius;
   
   // Sélection de l'élément actif (compétence ou technologie) en fonction de l'onglet actif
   const currentItem = isSkillsTab
@@ -41,7 +63,6 @@ export default function Curseurs() {
     : technologies[currentSkill];
 
   // Calcul du décalage pour l'animation du cercle de progression
-  // Le décalage est basé sur le pourcentage de maîtrise
   const offset = circumference - (currentItem.percent / 100) * circumference;
 
   // Gestion du clic sur une compétence ou une technologie
@@ -50,150 +71,110 @@ export default function Curseurs() {
     setIsSkillsTab(isSkill);
   };
 
+  // Taille du conteneur SVG basée sur le rayon et l'épaisseur du trait
+  const containerSize = (circleSize.radius + circleSize.strokeWidth) * 2;
+
   return (
-    <div className="p-6 container">
-      <div className="flex flex-wrap gap-2 mb-15" >
+    <div className="p-4 md:p-6 container mx-auto">
+      {/* Conteneur pour les boutons de compétences et technologies */}
+      <div className="flex flex-col gap-4 md:gap-2 mb-8 md:mb-15">
         {/* Section des compétences */}
-        <div className="w-full mb-4" >
-          {/* Titre de la section */}
-          <h3 className="text-xl font-bold mb-2">Langages:</h3>
-          {/* Conteneur flexible pour les boutons des compétences */}
-          <div className="flex flex-wrap gap-2">
-            {/* Boucle sur le tableau des compétences pour créer un bouton par compétence */}
+        <div className="w-full mb-4">
+          <h3 className="text-lg md:text-xl font-bold mb-2">Langages:</h3>
+          <div className="flex flex-wrap justify-center gap-2">
             {skills.map((skill, index) => (
-              // Bouton cliquable pour chaque compétence
               <button
-                // Clé unique pour l'optimisation du rendu React
                 key={skill.title}
-                // Gère le clic sur le bouton, en passant l'index et true pour indiquer que c'est une compétence
                 onClick={() => handleSkillClick(index, true)}
-                // Classes conditionnelles pour le style du bouton :
-                // - Style de base avec padding, arrondis et dégradé de couleur
-                // - Effet de survol qui inverse le dégradé
-                // - Mise en évidence si la compétence est sélectionnée (bordure blanche et texte en gras)
-                className={`px-4 py-2 text-xl text-gray-100 transition bg-gradient-to-r from-blue-600 to-blue-900 rounded-md h-14 w-44 hover:from-blue-900 hover:to-blue-600 flex items-center justify-center gap-2 ${
+                className={`px-2 py-1 md:px-4 md:py-2 text-sm md:text-xl text-white transition bg-gradient-to-r from-blue-600 to-blue-900 rounded-md h-10 md:h-14 w-28 md:w-44 hover:from-blue-900 hover:to-blue-600 flex items-center justify-center gap-1 md:gap-2 ${
                   currentSkill === index && isSkillsTab
-                    ? "font-bold ring-2 ring-gray-100"
+                    ? "font-bold ring-1 md:ring-2 ring-white"
                     : ""
                 }`}
               >
-                {/* Icône de la compétence */}
                 <Image
-                  // Chemin vers l'icône de la compétence
                   src={skill.icon}
-                  // Texte alternatif pour l'accessibilité, affiché si l'image ne se charge pas
                   alt={skill.title}
-                  // Taille fixe pour toutes les icônes de compétences
-                  width={40}
-                  height={40}
-                  // Classes CSS pour le style
-                  className={`w-10 h-10 object-contain ${
-                    // Animation de survol : légère rotation et mise à l'échelle
-                    "transition-transform duration-300 hover:scale-110 hover:rotate-6"
-                  }`}
+                  width={32}
+                  height={32}
+                  className={`w-6 h-6 md:w-10 md:h-10 object-contain transition-transform duration-300 hover:scale-110 hover:rotate-6`}
                 />
-                {/* Affiche le nom de la compétence à côté de l'icône */}
-                {skill.title}
+                <span className="text-xs md:text-base">{skill.title}</span>
               </button>
             ))}
           </div>
         </div>
 
-        {/* Section des technologies et outils */}
+        {/* Section des technologies */}
         <div className="w-full">
-          {/* Titre de la section */}
-          <h3 className="text-xl font-bold mb-2">Technologies & Outils :</h3>
-          {/* Conteneur flexible pour les boutons des technologies */}
-          <div className="flex flex-wrap gap-2">
-            {/* Boucle sur le tableau des technologies pour créer un bouton par technologie */}
+          <h3 className="text-lg md:text-xl font-bold mb-2">Technologies & Outils :</h3>
+          <div className="flex flex-wrap justify-center gap-2">
             {technologies.map((technology, index) => (
-              // Bouton cliquable pour chaque technologie
               <button
-                // Clé unique pour l'optimisation du rendu React
                 key={technology.title}
-                // Gère le clic sur le bouton, en passant l'index et false pour indiquer que c'est une technologie
                 onClick={() => handleSkillClick(index, false)}
-                // Classes conditionnelles pour le style du bouton :
-                // - Style de base avec padding, arrondis et dégradé de couleur
-                // - Effet de survol qui inverse le dégradé
-                // - Mise en évidence si la technologie est sélectionnée (bordure blanche et texte en gras)
-                className={`px-4 py-2 text-xl text-gray-100 transition bg-gradient-to-r from-blue-600 to-blue-900 rounded-md h-14 w-44 hover:from-blue-900 hover:to-blue-600 flex items-center justify-center gap-2 ${
+                className={`px-2 py-1 md:px-4 md:py-2 text-sm md:text-xl text-white transition bg-gradient-to-r from-blue-600 to-blue-900 rounded-md h-10 md:h-14 w-28 md:w-44 hover:from-blue-900 hover:to-blue-600 flex items-center justify-center gap-1 md:gap-2 ${
                   currentSkill === index && !isSkillsTab
-                    ? "font-bold ring-2 ring-gray-100"
+                    ? "font-bold ring-1 md:ring-2 ring-white"
                     : ""
                 }`}
               >
-                {/* Icône de la technologie */}
                 <Image
-                  // Chemin vers l'icône de la technologie
                   src={technology.icon}
-                  // Texte alternatif pour l'accessibilité
                   alt={technology.title}
-                  // Taille légèrement réduite par rapport aux icônes de langages
-                  width={32}
-                  height={32}
-                  // Classes CSS pour le style
-                  className={`w-8 h-8 object-contain ${
-                    // Animation de survol : légère rotation et mise à l'échelle
-                    "transition-transform duration-300 hover:scale-110 hover:rotate-6"
-                  }`}
+                  width={24}
+                  height={24}
+                  className={`w-5 h-5 md:w-8 md:h-8 object-contain transition-transform duration-300 hover:scale-110 hover:rotate-6`}
                 />
-                {/* Affiche le nom de la technologie à côté de l'icône */}
-                {technology.title}
+                <span className="text-xs md:text-base">{technology.title}</span>
               </button>
             ))}
           </div>
         </div>
       </div>
 
-      <div className="flex items-center justify-center mt-8">
-        <div className="relative w-72 h-72">
-          <svg className="w-full h-full transform -rotate-90">
-            {/* Cercle de progression avec animation */}
+      {/* Conteneur du cercle de progression */}
+      <div className="flex items-center justify-center mt-4 md:mt-8">
+        <div className="relative" style={{ width: `${containerSize}px`, height: `${containerSize}px` }}>
+          <svg 
+            width="100%" 
+            height="100%" 
+            viewBox={`0 0 ${containerSize} ${containerSize}`}
+            className="transform -rotate-90"
+          >
             <circle
-              cx="50%"
-              cy="50%"
-              r="120"
-              stroke="currentColor"
-              strokeWidth="30"
-              // Effet d'ombre portée pour donner de la profondeur
-              filter="drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.5))"
-              fill="transparent"
-              // Couleur blanche pour le cercle de fond
-              className="text-white"
+              cx={circleSize.radius + circleSize.strokeWidth}
+              cy={circleSize.radius + circleSize.strokeWidth}
+              r={circleSize.radius}
+              stroke="white"
+              strokeWidth={circleSize.strokeWidth}
+              strokeLinecap="round"
+              filter="drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.4))"
+              fill="none"
+              className="text-white/30"
             />
-            {/* Cercle de progression principal qui affiche visuellement le niveau de maîtrise */}
+            {/* Cercle de progression bleu */}
             <circle
-              // Position horizontale du centre du cercle (50% de la largeur du conteneur SVG)
-              cx="50%"
-              // Position verticale du centre du cercle (50% de la hauteur du conteneur SVG)
-              cy="50%"
-              // Rayon du cercle (120 unités)
-              r="120"
-              // Couleur du trait, héritée de la couleur de texte actuelle
+              cx={circleSize.radius + circleSize.strokeWidth}
+              cy={circleSize.radius + circleSize.strokeWidth}
+              r={circleSize.radius}
               stroke="currentColor"
-              // Épaisseur du trait du cercle (30 unités)
-              strokeWidth="30"
-              // Le cercle est vide (pas de remplissage)
-              fill="transparent"
-              // Définit le motif de tirets pour le contour du cercle
-              // Ici, on utilise la circonférence totale pour créer un effet de progression
+              strokeWidth={circleSize.strokeWidth}
+              strokeLinecap="butt"
+              fill="none"
+              filter="drop-shadow(0px 0px 5px rgba(0, 0, 0, 0.4))"
               strokeDasharray={circumference}
-              // Décalage du point de départ du motif de tirets
-              // Permet de faire varier la portion visible du cercle en fonction du pourcentage
               strokeDashoffset={offset}
-              // Classes CSS pour le style et l'animation :
-              // - Couleur bleu foncé pour la partie remplie
-              // - Transition fluide sur toutes les propriétés animables
-              // - Durée de l'animation : 500ms
-              // - Fonction de temporisation pour un mouvement naturel (ease-in-out)
               className="text-blue-900 transition-all duration-500 ease-in-out"
             />
           </svg>
-          {/* Conteneur positionné de manière absolue par rapport au conteneur parent */}
-          {/* Affiche le pourcentage de maîtrise au centre du cercle */}
-          <div className="absolute inset-0 flex items-center justify-center text-5xl font-bold">
-            {/* Affiche dynamiquement le pourcentage de la compétence/technologie sélectionnée */}
+          <div 
+            className="absolute inset-0 flex items-center justify-center text-3xl md:text-5xl font-bold text-gray-800"
+            style={{
+              fontSize: `${circleSize.radius * 0.5}px`,
+              lineHeight: 1
+            }}
+          >
             {currentItem.percent}%
           </div>
         </div>
