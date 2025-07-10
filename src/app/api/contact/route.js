@@ -64,7 +64,7 @@ export async function POST(req) {
 
     // Envoi de l'email via Resend
     const data = await resend.emails.send({
-      from: "onboarding@resend.dev", // Adresse d'expédition
+      from: "contact@corentin-lanaud-portfolio.fr", // Adresse d'expédition
       to: [resendEmail], // Destinataire (récupéré des variables d'environnement)
       subject: `Nouveau message du Portfolio`,
       // Utilisation du template d'email React personnalisé
