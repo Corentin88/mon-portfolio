@@ -8,6 +8,7 @@
  * @returns {JSX.Element} Le composant de modale
  */
 import { useEffect } from "react";
+import Image from 'next/image';
 
 export default function ModalCard({ projet, isOpen, onClose }) {
   // Effet pour gérer le défilement et le style du body quand la modale est ouverte
@@ -111,10 +112,13 @@ export default function ModalCard({ projet, isOpen, onClose }) {
           <div className="md:flex gap-8">
             {/* Colonne de gauche : Image du projet */}
             <div className="md:w-1/2 mb-6 md:mb-0">
-              <img
+              <Image
                 src={projet.imageModal}
                 alt={projet.title}
+                width={800}
+                height={600}
                 className="w-full max-h-[600px] object-contain rounded-lg shadow-md"
+                priority
               />
             </div>
             

@@ -109,6 +109,20 @@ export default function Sidebar({ isOpen, onToggle }) {
     }
   };
 
+  // Gérer le défilement du body en fonction de l'état d'ouverture
+  useEffect(() => {
+    if (isOpen && window.innerWidth < 768) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+    
+    // Nettoyage
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [isOpen]);
+
   // Gestion du clic en dehors
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -137,15 +151,6 @@ export default function Sidebar({ isOpen, onToggle }) {
     <div className="fixed w-full z-50 sidebar">
       <Disclosure as="nav" className="bg-[#ff9822] md:bg-transparent">
         {({ open }) => {
-          // Gérer le défilement du body
-          useEffect(() => {
-            if (open && window.innerWidth < 768) {
-              document.body.style.overflow = "hidden";
-            } else {
-              document.body.style.overflow = "auto";
-            }
-          }, [open]);
-
           return (
             <>
               {/* Version mobile */}

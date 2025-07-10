@@ -9,7 +9,7 @@ export default function Hero() {
     <section className="hero mt-20">
       {/* Titre principal avec animation de fondu vers le haut */}
       <h1 className="hero-title animate-fade-up animate-once animate-delay-500 animate-duration-1000 animate-ease-in">
-        À la recherche d'un développeur ?
+        À la recherche d&apos;un développeur ?
       </h1>
       
       {/* Premier paragraphe de texte avec animation de fondu vers le bas */}
@@ -18,7 +18,7 @@ export default function Hero() {
         <br />
         vous venez peut-être de le trouver. 👀
         <br />
-        Développeur sympa, à l'écoute, toujours partant pour transformer une
+        Développeur sympa, à l&apos;écoute, toujours partant pour transformer une
         idée en vrai projet !
       </p>
       

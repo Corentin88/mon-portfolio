@@ -23,14 +23,14 @@ export default function Presentation() {
         <div className="presentation-text mt-15 space-y-3">
           {/* Premier paragraphe avec animation de défilement */}
           <p className="scroll-animate opacity-0 transition-opacity duration-1000 ease-in">
-            Bonjour, je m'appelle Corentin, développeur web en reconversion,
-            passionné par l'univers du code et des technologies.
+            Bonjour, je m&apos;appelle Corentin, développeur web en reconversion,
+            passionné par l&apos;univers du code et des technologies.
           </p>
           <br />
           
           {/* Deuxième paragraphe avec animation de défilement */}
           <p className="scroll-animate opacity-0 transition-opacity duration-1000 ease-in">
-            J'ai choisi de me réorienter vers un domaine qui me stimule vraiment : créer,
+            J&apos;ai choisi de me réorienter vers un domaine qui me stimule vraiment : créer,
             comprendre, et résoudre des problèmes concrets grâce au développement.
           </p>
           <br />
@@ -38,13 +38,13 @@ export default function Presentation() {
           {/* Troisième paragraphe avec animation de défilement */}
           <p className="scroll-animate opacity-0 transition-opacity duration-1000 ease-in">
             Encore en début de parcours, je construis des projets avec sérieux,
-            curiosité et l'envie constante de progresser.
+            curiosité et l&apos;envie constante de progresser.
           </p>
           <br />
           
           {/* Quatrième paragraphe avec animation de défilement */}
           <p className="scroll-animate opacity-0 transition-opacity duration-1000 ease-in">
-            Chaque ligne de code est une occasion d'apprendre, chaque bug une opportunité de grandir.
+            Chaque ligne de code est une occasion d&apos;apprendre, chaque bug une opportunité de grandir.
           </p>
         </div>
       </div>

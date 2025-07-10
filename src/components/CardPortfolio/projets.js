@@ -15,7 +15,7 @@ const projects = [
     descriptionFull: (  // Description détaillée avec possibilité d'utiliser du JSX
       <>
         Mon Portfolio développé avec Next.js.(Pour découvir et expérimenter next.js).
-        Mise en place d'un honeypot pour protéger le formulaire de contact.
+        Mise en place d&apos;un honeypot pour protéger le formulaire de contact.
       </>
     ),
     image: "/projets/Portfolio/portfolio.png",  // Chemin vers l'image de prévisualisation

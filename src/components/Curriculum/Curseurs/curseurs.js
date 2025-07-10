@@ -1,5 +1,6 @@
 // Importation du hook useState de React pour gérer l'état local du composant
 import { useState } from "react";
+import Image from 'next/image';
 
 /**
  * Composant Curseurs - Affiche des compétences sous forme de curseurs circulaires
@@ -77,18 +78,19 @@ export default function Curseurs() {
                 }`}
               >
                 {/* Icône de la compétence */}
-                <img
+                <Image
                   // Chemin vers l'icône de la compétence
                   src={skill.icon}
                   // Texte alternatif pour l'accessibilité, affiché si l'image ne se charge pas
                   alt={skill.title}
                   // Taille fixe pour toutes les icônes de compétences
-                  className="w-10 h-10 object-contain"
-                  // Gestion de l'erreur si l'icône ne se charge pas
-                  onError={(e) => {
-                    // Masque l'image en cas d'erreur de chargement
-                    e.target.style.display = "none";
-                  }}
+                  width={40}
+                  height={40}
+                  // Classes CSS pour le style
+                  className={`w-10 h-10 object-contain ${
+                    // Animation de survol : légère rotation et mise à l'échelle
+                    "transition-transform duration-300 hover:scale-110 hover:rotate-6"
+                  }`}
                 />
                 {/* Affiche le nom de la compétence à côté de l'icône */}
                 {skill.title}
@@ -122,18 +124,19 @@ export default function Curseurs() {
                 }`}
               >
                 {/* Icône de la technologie */}
-                <img
+                <Image
                   // Chemin vers l'icône de la technologie
                   src={technology.icon}
                   // Texte alternatif pour l'accessibilité
                   alt={technology.title}
                   // Taille légèrement réduite par rapport aux icônes de langages
-                  className="w-8 h-8 object-contain"
-                  // Gestion de l'erreur si l'icône ne se charge pas
-                  onError={(e) => {
-                    // Masque l'image en cas d'erreur de chargement
-                    e.target.style.display = "none";
-                  }}
+                  width={32}
+                  height={32}
+                  // Classes CSS pour le style
+                  className={`w-8 h-8 object-contain ${
+                    // Animation de survol : légère rotation et mise à l'échelle
+                    "transition-transform duration-300 hover:scale-110 hover:rotate-6"
+                  }`}
                 />
                 {/* Affiche le nom de la technologie à côté de l'icône */}
                 {technology.title}

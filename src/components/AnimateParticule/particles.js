@@ -157,7 +157,7 @@ export default function ParticlesComponent() {
       },
       detectRetina: true, // Optimisation pour les écrans haute résolution (Retina)
     }),
-    [colors] // Les options sont recalculées quand les couleurs changent
+    [] // Suppression de la dépendance inutile 'colors'
   );
 
   // Si le moteur est initialisé, on affiche les particules avec la configuration définie

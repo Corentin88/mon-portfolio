@@ -3,6 +3,8 @@
  * Affiche le pied de page du site avec le copyright et le crédit de développement
  * @returns {JSX.Element} Le rendu du composant Footer
  */
+import Image from 'next/image';
+
 export default function Footer() {
   return (
     // Balise footer sémantique HTML5
@@ -25,13 +27,13 @@ export default function Footer() {
               {/* Texte statique */}
               Made with {" "}
               {/* Logo de Next.js avec des classes pour la taille et l'espacement */}
-              <img 
-                alt="logo" 
-                src="/logo/next.svg" 
-                className="h-5 w-auto ml-2" 
-                // Attributs d'accessibilité
-                width="80"
-                height="20"
+              <Image 
+                src="/logo/next.svg"
+                alt="Next.js Logo"
+                width={80}
+                height={20}
+                className="h-5 w-auto ml-2"
+                priority
               />
             </div>
           </div>

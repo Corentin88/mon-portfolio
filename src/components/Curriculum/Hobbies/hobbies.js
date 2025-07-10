@@ -18,7 +18,7 @@ export default function Hobbies() {
       {/* Conteneur avec largeur maximale et padding */}
       <div className="container">
         {/* Titre de la section */}
-        <h2 className="section-title">Centres d'Intérêt</h2>
+        <h2 className="section-title">Centres d&apos;Intérêt</h2>
         
         {/* Description des centres d'intérêt */}
         <p className="text-gray-600 text-sm mt-1 mb-15">

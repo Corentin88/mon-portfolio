@@ -10,7 +10,7 @@ export default function Quality() {
     // Section principale avec l'ID pour la navigation et la classe de style
     <section id="quality" className="quality">
       {/* Titre principal de la section */}
-      <h2 className="h2">L'essence de mon travail</h2>
+      <h2 className="h2">L&apos;essence de mon travail</h2>
       {/* Ligne de séparation décorative */}
       <hr className="hr" />
       
@@ -84,7 +84,7 @@ export default function Quality() {
             className="mb-4"
           />
           {/* Titre de la carte */}
-          <h3 className="text-xl font-semibold mb-2">Passion & innovation</h3>
+          <h3 className="text-xl font-semibold mb-2">Passion &amp; innovation</h3>
           {/* Description de la passion */}
           <p>Projets persos, apprentissage continu.</p>
         </div>

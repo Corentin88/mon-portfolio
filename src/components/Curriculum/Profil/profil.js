@@ -3,6 +3,7 @@
 // - globals.css : contient les styles globaux de l'application
 import "./profil.css";
 import "../../../app/globals.css";
+import Image from 'next/image';
 
 // Définition du composant fonctionnel Profil
 export default function Profil() {
@@ -52,7 +53,7 @@ export default function Profil() {
           <div className="mt-5 mb-10">
             <p>
               Développeur débutant qui transforme chaque erreur 404 en
-              opportunité d'amélioration.
+              opportunité d&apos;amélioration.
             </p>
             <p>Mon code est aussi solide que ma détermination.</p>
           </div>
@@ -68,10 +69,12 @@ export default function Profil() {
             {/* Ligne d'adresse avec icône */}
             <p className="flex items-center gap-2">
               {/* Icône de localisation */}
-              <img
+              <Image
                 className="w-5 h-5"  // Taille fixe de 5 unités (1.25rem)
-                src="icons/icons8-location-50.png"
+                src="/icons/icons8-location-50.png"
                 alt="Localisation"
+                width={20}
+                height={20}
               />
               10 allée des aulnes 88380 ARCHES
             </p>
@@ -79,10 +82,12 @@ export default function Profil() {
             {/* Ligne de téléphone avec icône */}
             <p className="flex items-center gap-2">
               {/* Icône de téléphone */}
-              <img
+              <Image
                 className="w-5 h-5"  // Même taille que l'icône de localisation
-                src="icons/icons8-phone-50.png"
+                src="/icons/icons8-phone-50.png"
                 alt="Telephone"
+                width={20}
+                height={20}
               />
               06 18 01 29 71
             </p>
@@ -102,10 +107,12 @@ export default function Profil() {
                 className="hover:underline hover:text-blue-900 flex items-center gap-2"
               >
                 {/* Icône d'email */}
-                <img
+                <Image
                   className="w-5 h-5"
-                  src="icons/icons8-email-50.png"
+                  src="/icons/icons8-email-50.png"
                   alt="Email"
+                  width={20}
+                  height={20}
                 />
                 corentin.lanaud@wanadoo.fr
               </a>
@@ -117,7 +124,13 @@ export default function Profil() {
                 rel="noopener noreferrer"
               >
                 {/* Icône GitHub */}
-                <img className="w-5 h-5" src="logo/github.svg" alt="Github" />
+                <Image 
+                  className="w-5 h-5" 
+                  src="/logo/github.svg" 
+                  alt="Github" 
+                  width={20}
+                  height={20}
+                />
                 Github
               </a>
 
@@ -129,7 +142,13 @@ export default function Profil() {
                 rel="noopener noreferrer"
               >
                 {/* Icône LinkedIn */}
-                <img className="w-5 h-5" src="logo/LinkedIn.svg" alt="Linkedin" />
+                <Image 
+                  className="w-5 h-5" 
+                  src="/logo/LinkedIn.svg" 
+                  alt="Linkedin" 
+                  width={20}
+                  height={20}
+                />
                 Linkedin
               </a>
             </div>
