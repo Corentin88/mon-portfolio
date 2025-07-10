@@ -172,14 +172,19 @@ export default function Sidebar({ isOpen, onToggle }) {
                       )}
                     </DisclosureButton>
                   </div>
-                  <div className="w-36 h-12 rounded-xl overflow-hidden absolute  right-50">
-                    <Image
-                      src="/logo/corentinLogoMobile.png"
-                      alt="Logo"
-                      width={100}
-                      height={100}
-                      className="object-cover w-full h-full"
-                    />
+                  <div className="flex-1 flex items-center justify-center">
+                    <div className="relative w-36 h-12">
+                      <div className="absolute inset-0 rounded-xl overflow-hidden">
+                        <Image
+                          src="/logo/CorentinLogoMobile.png"
+                          alt="LogoCorentin"
+                          width={144}
+                          height={48}
+                          className="w-full h-full object-cover"
+                          priority
+                        />
+                      </div>
+                    </div>
                   </div>
                 </div>
 
