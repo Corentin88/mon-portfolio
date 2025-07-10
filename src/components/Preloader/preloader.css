@@ -1,0 +1,240 @@
+/* Importation des polices Google Fonts utilisées dans le préchargeur */
+/* Lato: poids 300 (light) et 400 (regular) */
+/* Poppins: poids 300 (light), 400 (regular) et 800 (extra-bold) */
+@import url("https://fonts.googleapis.com/css?family=Lato:300,400|Poppins:300,400,800&display=swap");
+
+/* Conteneur principal du préchargeur */
+/* Toute la zone visible de l'écran */
+.preloader-container {
+  width: 100%;                    /* Largeur complète de la fenêtre */
+  height: 100vh;                  /* Hauteur complète de la fenêtre */
+  background: #232323;            /* Fond noir foncé */
+  display: flex;                  /* Utilisation de flexbox pour le centrage */
+  justify-content: center;        /* Centrage horizontal */
+  align-items: center;           /* Centrage vertical */
+  position: fixed;               /* Fixe par rapport à la fenêtre */
+  top: 0;                        /* Positionnement en haut */
+  left: 0;                       /* Positionnement à gauche */
+  z-index: 9999;                 /* S'assure que le préchargeur est au-dessus de tout */
+  transition: opacity 0.8s ease-out, visibility 0.8s ease-out; /* Transition fluide pour le fondu */
+}
+
+/* État caché du préchargeur */
+/* Appliqué lorsque le chargement est terminé */
+.preloader-container.hidden {
+  opacity: 0;                    /* Rendre le préchargeur transparent */
+  visibility: hidden;            /* Cacher complètement l'élément */
+}
+
+/* Réinitialisation des marges et paddings */
+/* S'applique uniquement aux éléments enfants du conteneur */
+.preloader-container * {
+  margin: 0;                     /* Supprime toutes les marges */
+  padding: 0;                    /* Supprime tous les paddings */
+}
+
+/* Conteneur de la boîte d'animation */
+.preloader-container .box {
+  width: 285px;                  /* Largeur fixe de la boîte */
+  height: 350px;                 /* Hauteur fixe de la boîte */
+  position: relative;            /* Positionnement relatif pour les éléments enfants */
+  display: flex;                 /* Utilisation de flexbox pour le centrage */
+  justify-content: center;       /* Centrage horizontal */
+  flex-direction: column;        /* Direction de flexbox en colonne */
+}
+
+/* Conteneur du titre */
+.preloader-container .title {
+  width: 100%;                   /* Largeur complète de la boîte */
+  position: relative;            /* Positionnement relatif pour les éléments enfants */
+  display: flex;                 /* Utilisation de flexbox pour le centrage */
+  align-items: center;          /* Centrage vertical */
+  height: 80px;                  /* Hauteur fixe du titre */
+}
+
+/* Bloc d'animation du titre */
+.preloader-container .title .block {
+  width: 0%;                     /* Largeur initiale à 0 */
+  height: inherit;               /* Hauteur héritée du parent */
+  background: #1020ff;          /* Fond bleu foncé */
+  position: absolute;           /* Positionnement absolu pour l'animation */
+  animation: mainBlock 2s cubic-bezier(0.74, 0.06, 0.4, 0.92) forwards; /* Animation principale */
+  display: flex;                 /* Utilisation de flexbox pour le centrage */
+}
+
+/* Titre principal */
+.preloader-container .title h1 {
+  font-family: "Poppins";        /* Police Poppins */
+  color: #fff;                   /* Couleur blanche */
+  font-size: 48px;               /* Taille de police */
+  -webkit-animation: mainFadeIn 2s forwards; /* Animation de fondu pour les navigateurs WebKit */
+  -o-animation: mainFadeIn 2s forwards; /* Animation de fondu pour les navigateurs Opera */
+  animation: mainFadeIn 2s forwards; /* Animation de fondu */
+  animation-delay: 1.6s;         /* Délai d'animation */
+  opacity: 0;                    /* Opacité initiale à 0 */
+  display: flex;                 /* Utilisation de flexbox pour le centrage */
+  align-items: baseline;        /* Alignement des éléments enfants */
+  position: relative;            /* Positionnement relatif pour les éléments enfants */
+}
+
+/* Élément de décoration du titre */
+.preloader-container .title h1 span {
+  width: 0px;                    /* Largeur initiale à 0 */
+  height: 0px;                   /* Hauteur initiale à 0 */
+  -webkit-border-radius: 50%;   /* Arrondi des coins pour les navigateurs WebKit */
+  -moz-border-radius: 50%;      /* Arrondi des coins pour les navigateurs Mozilla */
+  border-radius: 50%;           /* Arrondi des coins */
+  background: #360dec;          /* Fond bleu foncé */
+  -webkit-animation: load 0.6s cubic-bezier(0.74, 0.06, 0.4, 0.92) forwards; /* Animation de chargement pour les navigateurs WebKit */
+  animation: popIn 0.8s cubic-bezier(0.74, 0.06, 0.4, 0.92) forwards; /* Animation de chargement */
+  animation-delay: 2s;           /* Délai d'animation */
+  margin-left: 5px;              /* Marge gauche */
+  margin-top: -10px;             /* Marge haute */
+  position: absolute;           /* Positionnement absolu pour l'animation */
+  bottom: 13px;                  /* Positionnement en bas */
+  right: -12px;                  /* Positionnement à droite */
+}
+
+/* Conteneur du rôle */
+.preloader-container .role {
+  width: 100%;                   /* Largeur complète de la boîte */
+  position: relative;            /* Positionnement relatif pour les éléments enfants */
+  display: flex;                 /* Utilisation de flexbox pour le centrage */
+  align-items: center;          /* Centrage vertical */
+  height: 30px;                  /* Hauteur fixe du rôle */
+  margin-top: 10px;              /* Marge haute */
+}
+
+/* Bloc d'animation du rôle */
+.preloader-container .role .block {
+  width: 0%;                     /* Largeur initiale à 0 */
+  height: inherit;               /* Hauteur héritée du parent */
+  background: #fbad12;          /* Fond orange */
+  position: absolute;           /* Positionnement absolu pour l'animation */
+  animation: secBlock 2s cubic-bezier(0.74, 0.06, 0.4, 0.92) forwards; /* Animation secondaire */
+  animation-delay: 2s;           /* Délai d'animation */
+  display: flex;                 /* Utilisation de flexbox pour le centrage */
+}
+
+/* Texte du rôle */
+.preloader-container .role p {
+  animation: secFadeIn 2s forwards; /* Animation de fondu secondaire */
+  animation-delay: 3.2s;         /* Délai d'animation */
+  opacity: 0;                    /* Opacité initiale à 0 */
+  font-weight: 400;              /* Poids de police */
+  font-family: "Lato";           /* Police Lato */
+  color: #f99418;                /* Couleur orange */
+  font-size: 25px;               /* Taille de police */
+  text-transform: uppercase;     /* Transformation en majuscules */
+  letter-spacing: 5px;           /* Espacement des lettres */
+}
+
+/* Animations - gardez les mêmes noms mais ajoutez un préfixe si nécessaire */
+@keyframes mainBlock {
+  0% {
+    width: 0%;                   /* Largeur initiale à 0 */
+    left: 0;                     /* Positionnement à gauche */
+  }
+  50% {
+    width: 100%;                 /* Largeur à 100% */
+    left: 0;                     /* Positionnement à gauche */
+  }
+  100% {
+    width: 0;                    /* Largeur finale à 0 */
+    left: 100%;                  /* Positionnement à droite */
+  }
+}
+
+@keyframes secBlock {
+  0% {
+    width: 0%;                   /* Largeur initiale à 0 */
+    left: 0;                     /* Positionnement à gauche */
+  }
+  50% {
+    width: 100%;                 /* Largeur à 100% */
+    left: 0;                     /* Positionnement à gauche */
+  }
+  100% {
+    width: 0;                    /* Largeur finale à 0 */
+    left: 100%;                  /* Positionnement à droite */
+  }
+}
+
+@keyframes mainFadeIn {
+  0% {
+    opacity: 0;                  /* Opacité initiale à 0 */
+  }
+  100% {
+    opacity: 1;                  /* Opacité finale à 1 */
+  }
+}
+
+@keyframes popIn {
+  0% {
+    width: 0px;                  /* Largeur initiale à 0 */
+    height: 0px;                 /* Hauteur initiale à 0 */
+    background: #1212e7;         /* Fond bleu foncé */
+    border: 0px solid #ddd;      /* Bordure transparente */
+    opacity: 0;                  /* Opacité initiale à 0 */
+  }
+  50% {
+    width: 10px;                 /* Largeur à 10px */
+    height: 10px;                /* Hauteur à 10px */
+    background: #1212e7;         /* Fond bleu foncé */
+    opacity: 1;                  /* Opacité finale à 1 */
+    bottom: 45px;                /* Positionnement en bas */
+  }
+  65% {
+    width: 7px;                  /* Largeur à 7px */
+    height: 7px;                 /* Hauteur à 7px */
+    bottom: 0px;                 /* Positionnement en bas */
+    width: 15px;                 /* Largeur à 15px */
+  }
+  80% {
+    width: 10px;                 /* Largeur à 10px */
+    height: 10px;                /* Hauteur à 10px */
+    bottom: 20px;                /* Positionnement en bas */
+  }
+  100% {
+    width: 7px;                  /* Largeur finale à 7px */
+    height: 7px;                 /* Hauteur finale à 7px */
+    background: #1212e7;         /* Fond bleu foncé */
+    border: 0px solid #222;      /* Bordure transparente */
+    bottom: 13px;                /* Positionnement en bas */
+  }
+}
+
+@keyframes secFadeIn {
+  0% {
+    opacity: 0;                  /* Opacité initiale à 0 */
+  }
+  100% {
+    opacity: 0.5;                /* Opacité finale à 0.5 */
+  }
+}
+
+@keyframes top {
+  0% {
+    opacity: 0;                  /* Opacité initiale à 0 */
+    bottom: -80px;               /* Positionnement en bas */
+  }
+  100% {
+    opacity: 1;                  /* Opacité finale à 1 */
+    bottom: 0px;                 /* Positionnement en bas */
+  }
+}
+
+@keyframes icon {
+  0% {
+    opacity: 0;                  /* Opacité initiale à 0 */
+    transform: scale(0);         /* Échelle initiale à 0 */
+  }
+  50% {
+    opacity: 1;                  /* Opacité finale à 1 */
+    transform: scale(1.3) rotate(-02deg); /* Échelle finale à 1.3 et rotation */
+  }
+  100% {
+    opacity: 1;                  /* Opacité finale à 1 */
+    bottom: 0px;                 /* Positionnement en bas */
+  }
+}

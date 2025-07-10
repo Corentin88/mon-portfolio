@@ -1,0 +1,157 @@
+/* 
+ * Importation de la police Google Fonts Lato avec différentes variantes de poids et de style
+ * Les variantes incluent : regular, italic, light, bold et black
+ */
+@import url("https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i");
+
+/* 
+ * Style de base pour le conteneur principal
+ * - Largeur à 100% de l'élément parent
+ * - Marge automatique pour centrer horizontalement
+ * - Texte en gras (font-weight: 900)
+ * - Texte en majuscules
+ * - Alignement du texte à gauche
+ */
+.container {
+  width: 100%;
+  margin: auto;
+  font-weight: 900;
+  text-transform: uppercase;
+  text-align: left;
+}
+
+/* 
+ * Style pour le texte animé
+ * - Taille de police de 50px
+ * - Marge supérieure de 50px pour l'espacement
+ * - Pas de marge sur les côtés ni en bas
+ */
+.animate {
+  font-size: 50px;
+  margin: 50px 0 0;
+}
+
+/* 
+ * Style pour chaque lettre du texte animé
+ * - Affichage en bloc en ligne pour l'animation individuelle
+ */
+.animate span {
+  display: inline-block;
+}
+
+/* 
+ * Délais d'animation pour chaque lettre
+ * Chaque lettre suivante a un délai d'animation progressif de 0.05s
+ * Cela crée un effet de vague lors de l'animation
+ */
+.animate span:nth-of-type(2) {
+  animation-delay: 0.05s;
+}
+.animate span:nth-of-type(3) {
+  animation-delay: 0.1s;
+}
+.animate span:nth-of-type(4) {
+  animation-delay: 0.15s;
+}
+.animate span:nth-of-type(5) {
+  animation-delay: 0.2s;
+}
+.animate span:nth-of-type(6) {
+  animation-delay: 0.25s;
+}
+.animate span:nth-of-type(7) {
+  animation-delay: 0.3s;
+}
+.animate span:nth-of-type(8) {
+  animation-delay: 0.35s;
+}
+.animate span:nth-of-type(9) {
+  animation-delay: 0.4s;
+}
+.animate span:nth-of-type(10) {
+  animation-delay: 0.45s;
+}
+.animate span:nth-of-type(11) {
+  animation-delay: 0.5s;
+}
+.animate span:nth-of-type(12) {
+  animation-delay: 0.55s;
+}
+.animate span:nth-of-type(13) {
+  animation-delay: 0.6s;
+}
+.animate span:nth-of-type(14) {
+  animation-delay: 0.65s;
+}
+.animate span:nth-of-type(15) {
+  animation-delay: 0.7s;
+}
+.animate span:nth-of-type(16) {
+  animation-delay: 0.75s;
+}
+.animate span:nth-of-type(17) {
+  animation-delay: 0.8s;
+}
+.animate span:nth-of-type(18) {
+  animation-delay: 0.85s;
+}
+.animate span:nth-of-type(19) {
+  animation-delay: 0.9s;
+}
+.animate span:nth-of-type(20) {
+  animation-delay: 0.95s;
+}
+
+/* 
+ * Délai d'animation pour la 20ème lettre du texte animé
+ * Chaque lettre a un délai progressif de 0.05s, donc la 20ème lettre commence à 0.95s
+ */
+.animate span:nth-of-type(20) {
+  animation-delay: 0.95s;
+}
+
+/* 
+ * Classe .six - Style pour une animation spécifique de texte
+ * - Couleur bleu foncé (#375aab)
+ * - Initialement invisible (opacity: 0)
+ * - Rotation de -180 degrés et décalage de 150px vers la droite
+ * - Animation "twister" d'une durée de 0.5s
+ * - L'animation conserve l'état final (forwards)
+ */
+.six span {
+  color: #375aab;
+  opacity: 0;
+  transform: rotate(-180deg) translate(150px, 0);
+  animation: twister 0.5s forwards;
+}
+
+/* 
+ * Conteneur secondaire avec animation
+ * - Couleur de texte noir légèrement bleuté (#050506)
+ * - Taille de police de 12px
+ * - Mêmes propriétés d'animation que .six span
+ * - Utilisé pour des éléments secondaires du profil
+ */
+.container2 {
+  color: #050506;
+  font-size: 12px;
+  opacity: 0;
+  transform: rotate(-180deg) translate(150px, 0);
+  animation: twister 0.5s forwards;
+}
+
+/* 
+ * Définition de l'animation "twister"
+ * - À 10% de l'animation : l'élément devient visible (opacity: 1)
+ * - À 100% de l'animation : l'élément est à sa position finale (rotation et translation annulées)
+ * - L'animation utilise des transformations CSS pour un rendu fluide
+ */
+@keyframes twister {
+  10% {
+    opacity: 1;  /* L'élément devient visible au début de l'animation */
+  }
+  100% {
+    transform: rotate(0deg) translate(0);
+    opacity: 1;
+  }
+}
