@@ -24,7 +24,7 @@ export default function Hobbies() {
         {/* Description des centres d'intérêt */}
         <p className="text-gray-600 text-sm mt-1 mb-15">
           Mes passions reflètent ma curiosité, ma rigueur et mon goût pour la
-          création, que ce soit derrière un écran ou en pleine nature.
+          création, que ce soit derrière un écran, en pleine nature ou aux fourneaux.
         </p>
         
         {/* Grille des cartes de hobbies */}
