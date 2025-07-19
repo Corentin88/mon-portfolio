@@ -9,7 +9,8 @@ export default function Hobbies() {
     { id: 1, name: "Pop Culture", emoji: "🎬" },        // Cinéma, séries, musique, etc.
     { id: 2, name: "Jeu Vidéo", emoji: "🎮" },         // Jeux vidéo et gaming
     { id: 3, name: "Science et Technologie", emoji: "🔬" }, // Actualités et découvertes scientifiques
-    { id: 4, name: "Randonnée", emoji: "🥾" },         // Activités de plein air
+    { id: 4, name: "Randonnée", emoji: "🥾" },// Activités de plein air
+    { id: 5, name: "Cuisine", emoji: "👨‍🍳" },         // Passion pour la cuisine
   ];
 
   return (
