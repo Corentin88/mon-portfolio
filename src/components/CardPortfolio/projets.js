@@ -9,7 +9,7 @@ const projects = [
   {
     id: 1,  // Identifiant unique du projet
     title: "Portfolio",  // Titre du projet
-    client: "Corentin Lanaud",  // Nom du client ou propriétaire du projet
+    client: "Personnel",  // Nom du client ou propriétaire du projet
     lienClient: "https://corentinlanaud.fr",  // Lien vers le site du client
     description: "Mon Portfolio.",  // Description courte du projet
     descriptionFull: (  // Description détaillée avec possibilité d'utiliser du JSX
@@ -66,6 +66,34 @@ const projects = [
   },
   {
     id: 3,
+    title: "MonFluxRSS",
+    client: "Personnel",
+    lienClient: "",  // Pas de lien client fourni
+    description: "Application web full-stack qui récupère et affiche des articles depuis des flux RSS.",
+    descriptionFull: (
+      <>
+        MonFluxRSS est une application web complète combinant un backend Symfony et un frontend Next.js.
+Le backend récupère automatiquement des articles depuis des flux RSS, les stocke en base de données et expose une API REST sécurisée avec JWT.
+Le frontend consomme cette API pour afficher les articles, gérer les flux, effectuer des recherches et intégrer des vidéos YouTube dans une interface moderne et responsive.
+Le projet illustre la création d’une application full-stack avec gestion d’authentification, pagination, filtres et consommation d’API sécurisée.
+      </>
+    ),
+    image: "/projets/monfluxrss/monfluxrss.png",
+    imageModal: "/projets/monfluxrss/modalfluxrss.png",
+    date: "2025",
+    demoUrl: "",
+    githubUrl: "https://github.com/Corentin88/MonFluxRSS",
+    technologies: [
+      "Symfony",
+      "API-Platform",
+      "JWT",
+      "Next.js",
+      "API externe",
+      "FeedIo",
+    ],
+  },
+  {
+    id: 4,
     title: "Site Photographe(En développement",
     client: "Valérie",
     lienClient: "",  // Pas de lien client fourni
@@ -83,9 +111,9 @@ const projects = [
     technologies: [],  // Tableau vide car pas de technologies spécifiées
   },
   {
-    id: 4,
+    id: 5,
     title: "Météo",
-    client: "Corentin Lanaud",
+    client: "Personnel",
     lienClient: "",
     description: "Site web pour avoir des prévisions sur la météo.",
     descriptionFull: (

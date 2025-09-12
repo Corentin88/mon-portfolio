@@ -1,6 +1,6 @@
 /**
  * Composant ModalCard - Affiche une modale détaillée pour un projet du portfolio
- * 
+ *
  * @param {Object} props - Les propriétés du composant
  * @param {Object} props.projet - Les données du projet à afficher
  * @param {boolean} props.isOpen - État d'ouverture/fermeture de la modale
@@ -8,7 +8,7 @@
  * @returns {JSX.Element} Le composant de modale
  */
 import { useEffect } from "react";
-import Image from 'next/image';
+import Image from "next/image";
 
 export default function ModalCard({ projet, isOpen, onClose }) {
   // Effet pour gérer le défilement et le style du body quand la modale est ouverte
@@ -18,31 +18,31 @@ export default function ModalCard({ projet, isOpen, onClose }) {
 
     // Sauvegarder la position de défilement actuelle pour la restaurer plus tard
     const scrollY = window.scrollY;
-    
+
     // Bloquer le défilement sur html et body pour empêcher le défilement de la page en arrière-plan
-    document.documentElement.style.overflow = 'hidden';
-    document.body.style.overflow = 'hidden';
-    
+    document.documentElement.style.overflow = "hidden";
+    document.body.style.overflow = "hidden";
+
     // Positionner le body en haut pour éviter un saut de défilement
-    document.body.style.position = 'fixed';
+    document.body.style.position = "fixed";
     document.body.style.top = `-${scrollY}px`;
-    document.body.style.width = '100%';
-    
+    document.body.style.width = "100%";
+
     // Ajouter une classe pour des styles spécifiques quand la modale est ouverte
-    document.body.classList.add('modal-open');
+    document.body.classList.add("modal-open");
 
     // Fonction de nettoyage qui s'exécute quand le composant est démonté ou quand isOpen change
     return () => {
       // Rétablir les styles par défaut
-      document.documentElement.style.overflow = '';
-      document.body.style.overflow = '';
-      document.body.style.position = '';
-      document.body.style.top = '';
-      document.body.style.width = '';
-      
+      document.documentElement.style.overflow = "";
+      document.body.style.overflow = "";
+      document.body.style.position = "";
+      document.body.style.top = "";
+      document.body.style.width = "";
+
       // Retirer la classe spécifique
-      document.body.classList.remove('modal-open');
-      
+      document.body.classList.remove("modal-open");
+
       // Restaurer la position de défilement précédente
       window.scrollTo(0, scrollY);
     };
@@ -62,10 +62,10 @@ export default function ModalCard({ projet, isOpen, onClose }) {
         onClose();
       }
     }
-    
+
     // Ajouter l'écouteur d'événement
     window.addEventListener("keydown", handleKeyDown);
-    
+
     // Nettoyer l'écouteur d'événement lors du démontage du composant
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [isOpen, onClose]);
@@ -77,12 +77,12 @@ export default function ModalCard({ projet, isOpen, onClose }) {
     // Conteneur principal de la modale avec fond semi-transparent
     <div
       className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-blue-800/50"
-      onClick={onClose}  // Fermer la modale en cliquant en dehors du contenu
+      onClick={onClose} // Fermer la modale en cliquant en dehors du contenu
     >
       {/* Contenu principal de la modale */}
       <div
         className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto bg-white rounded-lg shadow-xl"
-        onClick={(e) => e.stopPropagation()}  // Empêcher la fermeture en cliquant à l'intérieur
+        onClick={(e) => e.stopPropagation()} // Empêcher la fermeture en cliquant à l'intérieur
       >
         {/* Bouton de fermeture */}
         <button
@@ -108,7 +108,10 @@ export default function ModalCard({ projet, isOpen, onClose }) {
         </button>
 
         {/* Contenu de la modale */}
-        <div className="p-6 text-center" style={{fontFamily: 'var(--font-jetbrains)'}}>
+        <div
+          className="p-6 text-center"
+          style={{ fontFamily: "var(--font-jetbrains)" }}
+        >
           <div className="md:flex gap-8">
             {/* Colonne de gauche : Image du projet */}
             <div className="md:w-1/2 mb-6 md:mb-0">
@@ -121,24 +124,24 @@ export default function ModalCard({ projet, isOpen, onClose }) {
                 priority
               />
             </div>
-            
+
             {/* Colonne de droite : Détails du projet */}
             <div className="md:w-1/2">
               {/* Titre du projet */}
               <h2 className="text-4xl font-bold text-gray-900 mb-10">
                 {projet.title}
               </h2>
-              
+
               {/* Informations sur le client */}
               <p className="text-lg text-black mb-4">
                 <span className="font-bold">Client :</span> {projet.client}
               </p>
-              
+
               {/* Date du projet */}
               <p className="text-lg text-black mb-6">
                 <span className="font-bold">Année :</span> {projet.date}
               </p>
-              
+
               {/* Description complète du projet */}
               <p className="text-black mb-6">{projet.descriptionFull}</p>
 
@@ -150,29 +153,50 @@ export default function ModalCard({ projet, isOpen, onClose }) {
                 <div className="flex flex-wrap gap-2 justify-center">
                   {projet.technologies.map((tech, index) => (
                     <span
-                      key={index}  // Clé unique pour chaque élément de la liste (requise par React)
+                      key={index} // Clé unique pour chaque élément de la liste (requise par React)
                       className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm"
                     >
-                      {tech}  {/* Affiche le nom de la technologie */}
+                      {tech} {/* Affiche le nom de la technologie */}
                     </span>
                   ))}
                 </div>
               </div>
 
               {/* Section conditionnelle pour afficher le lien vers le projet uniquement si l'URL est fournie */}
-              {projet.lien && (
-                <div className="mt-8">
-                  {/* Lien externe qui s'ouvre dans un nouvel onglet */}
-                  <a
-                    href={projet.lien}  // URL du projet
-                    target="_blank"     // Ouvre le lien dans un nouvel onglet
-                    rel="noopener noreferrer"  // Bonnes pratiques de sécurité pour les liens target="_blank"
-                    className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-                  >
-                    Voir le projet  {/* Texte du bouton */}
-                  </a>
-                </div>
-              )}
+              <div className="flex gap-2 justify-center">
+                {projet.githubUrl && (
+                  <div className="mt-8">
+                    {/* Lien externe qui s'ouvre dans un nouvel onglet */}
+                    <a
+                      href={projet.githubUrl} // URL du projet
+                      target="_blank" // Ouvre le lien dans un nouvel onglet
+                      rel="noopener noreferrer" // Bonnes pratiques de sécurité pour les liens target="_blank"
+                      className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-black bg-gray-200 hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+                    >
+                      <img
+                        src="/logo/github.svg"
+                        alt="GitHub"
+                        className="w-8 h-8 mr-2"
+                        aria-hidden="true"
+                      />
+                      Voir sur GitHub
+                    </a>
+                  </div>
+                )}
+                {projet.demoUrl && (
+                  <div className="mt-8">
+                    {/* Lien externe qui s'ouvre dans un nouvel onglet */}
+                    <a
+                      href={projet.demoUrl} // URL du projet
+                      target="_blank" // Ouvre le lien dans un nouvel onglet
+                      rel="noopener noreferrer" // Bonnes pratiques de sécurité pour les liens target="_blank"
+                      className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+                    >
+                      Voir le projet en ligne {/* Texte du bouton */}
+                    </a>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>
