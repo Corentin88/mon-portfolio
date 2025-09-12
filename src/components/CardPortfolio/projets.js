@@ -78,8 +78,8 @@ Le frontend consomme cette API pour afficher les articles, gérer les flux, effe
 Le projet illustre la création d’une application full-stack avec gestion d’authentification, pagination, filtres et consommation d’API sécurisée.
       </>
     ),
-    image: "/projets/MonFluxRSS/MonFluxRSS.png",
-    imageModal: "/projets/MonFluxRSS/ModalfluxRSS.png",
+    image: "/projets/MonFluxRSS/MonfluxRSS.png",
+    imageModal: "/projets/MonFluxRSS/ModalFluxRSS.png",
     date: "2025",
     demoUrl: "",
     githubUrl: "https://github.com/Corentin88/MonFluxRSS",
