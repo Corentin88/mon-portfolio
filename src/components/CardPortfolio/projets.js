@@ -92,8 +92,28 @@ Le projet illustre la création d’une application full-stack avec gestion d’
       "FeedIo",
     ],
   },
+  
   {
     id: 4,
+    title: "Météo",
+    client: "Personnel",
+    lienClient: "",
+    description: "Météo du jour et des 7 prochains jours, par ville ou via géolocalisation.",
+    descriptionFull: (
+      <>
+        Application météo développée pendant mon stage chez DIGICOMM pour apprendre Symfony et l’intégration d’API externes. Permet la recherche par ville ou géolocalisation et affiche les prévisions sur 7 jours.
+      </>
+    ),
+    image: "/projets/Meteo/MeteoApp.png",
+    imageModal: "/projets/Meteo/MeteoSemaineApp.png",
+    date: "2025",
+    demoUrl: "https://corentinportfolio.alwaysdata.net/meteo",
+    githubUrl: "",
+    technologies: [
+      "Symfony 7.2", "PHP 8.2", "MySQL/MariaDB", "JavaScript (géolocalisation)"," API externes (RapidAPI, OpenStreetMap)", "Twig"
+    ],
+  },{
+    id: 5,
     title: "Site Photographe(En développement",
     client: "Valérie",
     lienClient: "",  // Pas de lien client fourni
@@ -109,28 +129,7 @@ Le projet illustre la création d’une application full-stack avec gestion d’
     demoUrl: "",
     githubUrl: "",
     technologies: [],  // Tableau vide car pas de technologies spécifiées
-  },
-  {
-    id: 5,
-    title: "Météo",
-    client: "Personnel",
-    lienClient: "",
-    description: "Site web pour avoir des prévisions sur la météo.",
-    descriptionFull: (
-      <>
-        Site fait pendant mon stage chez DIGICOMM pour découvrir Symfony et les API externes.
-      </>
-    ),
-    image: "/projets/WorkInProgress/WorkinProgress.png",
-    imageModal: "/projets/WorkInProgress/WorkinProgress.png",
-    date: "2025",
-    demoUrl: "",
-    githubUrl: "",
-    technologies: [
-      "Symfony",
-      "API externe",
-    ],
-  },
+  }
 ];
 
 // Exportation du tableau des projets pour pouvoir l'importer dans d'autres fichiers
