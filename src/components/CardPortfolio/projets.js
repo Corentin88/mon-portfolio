@@ -108,7 +108,7 @@ Le projet illustre la création d’une application full-stack avec gestion d’
     imageModal: "/projets/Meteo/MeteoSemaineApp.png",
     date: "2025",
     demoUrl: "https://corentinportfolio.alwaysdata.net/meteo",
-    githubUrl: "",
+    githubUrl: "https://github.com/Corentin88/Meteo",
     technologies: [
       "Symfony 7.2", "PHP 8.2", "MySQL/MariaDB", "JavaScript (géolocalisation)"," API externes (RapidAPI, OpenStreetMap)", "Twig"
     ],
