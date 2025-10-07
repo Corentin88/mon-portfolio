@@ -129,6 +129,24 @@ Le projet illustre la création d’une application full-stack avec gestion d’
     demoUrl: "",
     githubUrl: "",
     technologies: [],  // Tableau vide car pas de technologies spécifiées
+  },
+  {
+    id: 6,
+    title: "Site Rando(En développement)",
+    client: "Personnel",
+    lienClient: "",  // Pas de lien client fourni
+    description: "Site web pour Rando.",
+    descriptionFull: (
+      <>
+        Site web pour Rando.
+      </>
+    ),
+    image: "/projets/WorkInProgress/WorkinProgress.png",
+    imageModal: "/projets/WorkInProgress/WorkinProgress.png",
+    date: "2025",
+    demoUrl: "",
+    githubUrl: "",
+    technologies: [],  // Tableau vide car pas de technologies spécifiées
   }
 ];
 
