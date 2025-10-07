@@ -81,7 +81,7 @@ Le projet illustre la création d’une application full-stack avec gestion d’
     image: "/projets/MonFluxRSS/MonfluxRSS.png",
     imageModal: "/projets/MonFluxRSS/ModalFluxRSS.png",
     date: "2025",
-    demoUrl: "",
+    demoUrl: "https://mon-flux-rss-5di4.vercel.app/",
     githubUrl: "https://github.com/Corentin88/MonFluxRSS",
     technologies: [
       "Symfony",
